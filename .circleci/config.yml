@@ -1,0 +1,30 @@
+version: 2.1
+
+orbs:
+  go: gotest/tools@0.0.13
+
+workflows:
+  ci:
+    jobs:
+      - lint
+      - test
+
+
+jobs:
+
+  lint:
+    executor: go/golang
+    steps:
+    - checkout
+    - run:
+        name: Lint
+        command: echo "lint it"
+
+  test:
+    executor: go/golang
+    steps:
+    - checkout
+    - run:
+        name: Test 
+        command: echo "test it"
+
