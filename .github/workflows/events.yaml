@@ -1,0 +1,23 @@
+name: "Test when events fire"
+
+on:
+  status
+  check_run:
+    types: [completed]
+  check_suite:
+    types: [completed]
+
+jobs:
+  print:
+    name: Print event context
+    runs-on: ubuntu-latest
+    steps:
+    - name: debug
+      env:
+        EVENT: ${{ toJson(github.event) }}
+        REF: ${{ toJson(github.ref) }}
+        SHA: ${{ toJson(github.sha) }}
+      run: |
+        echo $REF $SHA
+        echo $EVENT
+
