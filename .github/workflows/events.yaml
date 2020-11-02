@@ -17,7 +17,7 @@ jobs:
       run: echo $EVENT
     - name: find artifacts
       run: |
-        workflow_url=$(curl -sSL "$URL" | jq -r '.[].details_url')
+        workflow_url=$(curl -sSL "$URL" | jq -r '.check_runs[].details_url')
         echo "$workflow_url"
         curl -sSL "$workflow_url"
 
