@@ -19,6 +19,8 @@ jobs:
     - run:
         name: Lint
         command: echo "lint it"
+    - run:
+        command: "false"
 
   test:
     executor: go/golang
